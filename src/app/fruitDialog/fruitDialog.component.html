@@ -1,0 +1,100 @@
+<!-- <p>fruitDialog works!</p>,
+
+<form class="w-full" #fruitForm="ngForm" (ngSubmit)="fruitForm.form.valid && dialogRef.close(fruitForm.value)">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput name="name" ngModel required>
+    <mat-error *ngIf="fruitForm.submitted || fruitForm.controls['name'].touched">
+      Name is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Serving Size</mat-label>
+    <input matInput name="servingSize" ngModel required>
+    <mat-error *ngIf="fruitForm.submitted || fruitForm.controls['servingSize'].touched">
+      Serving Size is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Price</mat-label>
+    <input matInput type="number" min="0" step="0.01" name="price" ngModel required>
+    <mat-error *ngIf="fruitForm.submitted || fruitForm.controls['price'].touched">
+      Price is required
+    </mat-error>
+  </mat-form-field>
+  <div class="flex justify-end">
+    <button mat-button type="submit" [disabled]="fruitForm.invalid">Add</button>
+  </div>
+</form>
+ -->
+
+<div class="h-[95vh] flex flex-wrap justify-center">
+  <!-- todo: if data is passed down, change to edit fruit -->
+  <h3 class="text-2xl font-bold mb-2">Add new fruit</h3>
+  <div class="h-[30%] w-full bg-slate-400"></div>
+  <form [formGroup]="fruitForm" (ngSubmit)="onSubmit()" class="w-full p-2">
+    <mat-form-field class="">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error
+        *ngIf="fruitForm.get('name')?.touched && fruitForm.get('name')?.invalid"
+      >
+        Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Serving Size</mat-label>
+      <input matInput formControlName="servingSize" required />
+      <mat-error
+        *ngIf="
+          fruitForm.get('servingSize')?.touched &&
+          fruitForm.get('servingSize')?.invalid
+        "
+      >
+        Serving Size is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input
+        matInput
+        type="number"
+        min="0"
+        step="0.01"
+        formControlName="price"
+        required
+      />
+      <mat-error
+        *ngIf="
+          fruitForm.get('price')?.touched && fruitForm.get('price')?.invalid
+        "
+      >
+        Price is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Inventory Size</mat-label>
+        <input
+          matInput
+          type="number"
+          min="0"
+          step="0.01"
+          formControlName="inventorySize"
+          required
+        />
+        <mat-error
+          *ngIf="
+            fruitForm.get('inventorySize')?.touched && fruitForm.get('inventorySize')?.invalid
+          "
+        >
+          Inventory Size is required
+        </mat-error>
+      </mat-form-field>
+      
+    <div class="flex justify-end">
+      <button mat-button type="submit" [disabled]="fruitForm.invalid">
+        Add
+      </button>
+    </div>
+  </form>
+</div>
