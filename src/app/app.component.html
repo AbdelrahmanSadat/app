@@ -15,13 +15,13 @@
   <div class="p-2">
     <div class="flex justify-between">
       <h4>Menu</h4>
-      <mat-icon fontIcon="add" (click)="openFruitDialog()"></mat-icon>
+      <mat-icon fontIcon="add" (click)="openAddFruitDialog()"></mat-icon>
     </div>
     <mat-divider class="bg-black"> </mat-divider>
 
     <div class="mb-20">
     <ng-container *ngFor="let fruit of fruits">
-      <mat-card class="mt-2 flex justify-between bg-white">
+      <mat-card class="mt-2 flex justify-between bg-white" (click)="openEditFruitDialog(fruit.id)">
         <img [src]="'assets/images/'+fruit.img" alt="" class="h-full w-auto" />
         <div>
           <mat-card-header>
@@ -29,20 +29,20 @@
           </mat-card-header>
           <mat-card-content> {{ fruit.servingSize }} </mat-card-content>
           <mat-card-actions>
-            <button mat-button>{{ fruit.price }} EGP</button>
+            <span mat-button>{{ fruit.price }} EGP</span>
           </mat-card-actions>
         </div>
         <div class="flex flex-col pr-2">
           <mat-icon
             fontIcon="add"
             class="m-auto"
-            (click)="incrementFruitAmount(fruit.id)"
+            (click)="$event.stopPropagation(); incrementFruitAmount(fruit.id)"
           ></mat-icon>
           <div class="text-center">{{ fruit.amount }}</div>
           <mat-icon
             fontIcon="remove"
             class="m-auto"
-            (click)="decrementFruitAmount(fruit.id)"
+            (click)="$event.stopPropagation(); decrementFruitAmount(fruit.id)"
           ></mat-icon>
           <mat-icon></mat-icon>
         </div>

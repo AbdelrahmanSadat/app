@@ -32,6 +32,8 @@ export const fruits = [
         img: 'mango.png',
     },
     
-
-
 ]
+
+export type Fruit = typeof fruits[number]
+
+export type Fruits = Fruit[]
