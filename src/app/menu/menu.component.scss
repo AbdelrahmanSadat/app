@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.mdc-card{
+  background: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.mat-toolbar{
+  background: white;
+  color: black;
+}

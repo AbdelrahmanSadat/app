@@ -1,0 +1,56 @@
+<div class="p-2">
+  <div class="min-h-[80vh]">
+    <div class="flex justify-between">
+      <h4>Cart</h4>
+      <mat-icon fontIcon="delete"></mat-icon>
+    </div>
+    <mat-divider class="bg-black"> </mat-divider>
+  </div>
+
+  <ng-container *ngFor="let fruit of cartService.cart">
+    <mat-card
+      *ngIf="fruit.amount > 0"
+      class="mt-2 flex justify-between bg-white"
+    >
+      <img [src]="'assets/images/' + fruit.img" alt="" class="h-full w-auto" />
+      <div>
+        <mat-card-header>
+          <mat-card-title>{{ fruit.name }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content> {{ fruit.servingSize }} </mat-card-content>
+        <mat-card-actions>
+          <span mat-button>{{ fruit.price }} EGP</span>
+        </mat-card-actions>
+      </div>
+      <div class="flex flex-col pr-2">
+        <mat-icon
+          fontIcon="add"
+          class="m-auto"
+          (click)="$event.stopPropagation(); cartService.addToCart(fruit.id)"
+        ></mat-icon>
+        <div class="text-center">{{ fruit.amount }}</div>
+        <mat-icon
+          fontIcon="remove"
+          class="m-auto"
+          (click)="
+            $event.stopPropagation(); cartService.removeFromCart(fruit.id)
+          "
+        ></mat-icon>
+        <mat-icon></mat-icon>
+      </div>
+    </mat-card>
+  </ng-container>
+
+  <div class="flex justify-between gap-2 mb-6">
+    <button
+      class="h-16 w-fit grow-[1] rounded-full px-10 text-lg bg-black text-white"
+    >
+      <a [routerLink]="['/menu']"> Menu</a>
+    </button>
+    <button
+      class="h-16 w-fit grow-[2] rounded-full px-10 text-lg bg-black text-white"
+    >
+      Pay
+    </button>
+  </div>
+</div>
