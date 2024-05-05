@@ -2,7 +2,13 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { MatIcon } from '@angular/material/icon';
-import { MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
+import {
+  MatCard,
+  MatCardActions,
+  MatCardContent,
+  MatCardHeader,
+  MatCardTitle,
+} from '@angular/material/card';
 import { MatDivider } from '@angular/material/divider';
 import { RouterLink } from '@angular/router';
 
@@ -18,17 +24,12 @@ import { RouterLink } from '@angular/router';
     MatCardHeader,
     MatCardTitle,
     MatDivider,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CartComponent { 
-
-  constructor(public cartService: CartService){
-    console.log(this.cartService.cart)
-  }
-  
-  
+export class CartComponent {
+  constructor(public cartService: CartService) {}
 }
