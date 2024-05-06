@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+@include mat.core();
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
@@ -5,4 +7,6 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #FAFAFA; }
-
+.typography{
+    font-family: "Titillium Web", "Helvetica Neue", sans-serif;
+}
