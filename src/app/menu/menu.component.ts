@@ -32,7 +32,7 @@ export class MenuComponent {
   // todo?: initialization can be moved up to cart service
   fruits = fruits.map((f) => ({ ...f, amount: 0 }));
 
-  constructor(public dialog: MatDialog, private cartService: CartService) {}
+  constructor(public dialog: MatDialog, public cartService: CartService) {}
 
   incrementFruitAmount(fruitId: number) {
     const fruit = this.fruits.find((f) => f.id === fruitId);
@@ -51,7 +51,7 @@ export class MenuComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      result && this.fruits.push({ ...result.data, img: 'apple.png' });
+      this.cartService.cart.push({ ...result.data, img: 'apple.png', amount: 0 });
     });
   }
 
@@ -61,12 +61,9 @@ export class MenuComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.fruits = this.fruits.map((f) => {
-        if (f.id === result.data.id) {
-          return { ...result.data, img: f.img };
-        }
-        return f;
-      });
+      const index = this.cartService.cart.findIndex((f) => f.id === result.data.id);
+      if (index !== -1)
+        this.cartService.cart[index] = result.data;
     });
   }
 }

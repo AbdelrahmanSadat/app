@@ -6,7 +6,7 @@
     <mat-divider class="bg-black"> </mat-divider>
 
     <div class="mb-20">
-    <ng-container *ngFor="let fruit of fruits">
+    <ng-container *ngFor="let fruit of cartService.cart">
       <mat-card class="mt-2 flex justify-between bg-white" (click)="openEditFruitDialog(fruit.id)">
         <img [src]="'assets/images/'+fruit.img" alt="" class="h-full w-auto" />
         <div>

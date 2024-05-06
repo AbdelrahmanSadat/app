@@ -26,4 +26,8 @@ export class CartService {
     fruit && fruit.amount--;
   }
 
+  totalPrice(){
+    return this.cart.reduce((total, f) => total + f.price * f.amount, 0);
+  }
+
 }
