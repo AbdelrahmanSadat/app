@@ -7,4 +7,26 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border-radius: 1rem;
+}
+
+.mat-mdc-card-title{
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: 600
+}
+
+.mat-mdc-card-content{
+  font-weight: 600;
+}
+
+.mat-mdc-card-actions{
+  font-weight: 600;
+  padding-left: 16px;
+  padding-right: 0px;
+  color: #1CB4BC;
+}
+
+.mat-icon{
+  height: fit-content;
 }

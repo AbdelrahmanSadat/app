@@ -1,15 +1,15 @@
-<div class="p-2">
-  <div class="flex justify-between flex-grow">
-    <h4>Cart</h4>
-    <mat-icon fontIcon="delete"></mat-icon>
+<div class="p-4">
+  <div class="flex justify-between mb-1">
+    <h2 class="font-semibold">Cart</h2>
+    <mat-icon fontIcon="delete" class="text-3xl"></mat-icon>
   </div>
   <mat-divider class="bg-black"> </mat-divider>
 
-  <div class="min-h-[77vh]">
+  <div class="mb-10 min-h-[69vh]">
     <ng-container *ngFor="let fruit of cartService.cart">
       <mat-card
         *ngIf="fruit.amount > 0"
-        class="mt-2 flex justify-between bg-white"
+        class="mt-4 flex justify-between bg-white"
       >
         <img
           [src]="'assets/images/' + fruit.img"
@@ -25,21 +25,20 @@
             <span mat-button>{{ fruit.price }} EGP</span>
           </mat-card-actions>
         </div>
-        <div class="flex flex-col pr-2">
+
+
+        <div class="flex flex-col pr-4 min-w-fit">
           <mat-icon
             fontIcon="add"
-            class="m-auto"
+            class="m-auto text-4xl min-w-fit"
             (click)="$event.stopPropagation(); cartService.addToCart(fruit.id)"
           ></mat-icon>
-          <div class="text-center">{{ fruit.amount }}</div>
+          <div class="text-right pr-[2px]">{{ fruit.amount }}</div>
           <mat-icon
             fontIcon="remove"
-            class="m-auto"
-            (click)="
-              $event.stopPropagation(); cartService.removeFromCart(fruit.id)
-            "
+            class="m-auto text-4xl min-w-fit"
+            (click)="$event.stopPropagation(); cartService.removeFromCart(fruit.id)"
           ></mat-icon>
-          <mat-icon></mat-icon>
         </div>
       </mat-card>
     </ng-container>

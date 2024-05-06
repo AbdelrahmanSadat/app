@@ -7,7 +7,7 @@
 
     <div class="mb-10 mt-4">
     <ng-container *ngFor="let fruit of cartService.cart">
-      <mat-card class="mt-4 flex justify-between bg-white rounded-3xl" (click)="openEditFruitDialog(fruit.id)">
+      <mat-card class="mt-4 flex justify-between bg-white" (click)="openEditFruitDialog(fruit.id)">
         <div class="flex">
         <img [src]="'assets/images/'+fruit.img" alt="" class="h-full w-auto" />
         <div>
