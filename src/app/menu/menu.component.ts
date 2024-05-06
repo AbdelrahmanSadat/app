@@ -29,7 +29,8 @@ import { CartService } from '../../services/cart.service';
 })
 export class MenuComponent {
   title = 'menu';
-  // todo?: initialization can be moved up to cart service
+  // todo?: initialization can be moved up to cart service 
+  //?  & relying solely on cart service instead of keeping two copies of fruits
   fruits = fruits.map((f) => ({ ...f, amount: 0 }));
 
   constructor(public dialog: MatDialog, public cartService: CartService) {}
@@ -49,6 +50,9 @@ export class MenuComponent {
   openAddFruitDialog(): void {
     const dialogRef = this.dialog.open(FruitDialogComponent, {
       data: { fruits, action: 'add' },
+      maxWidth: '500px',
+      minWidth: '300px',
+      backdropClass: 'dialog-backdrop',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -59,6 +63,9 @@ export class MenuComponent {
   openEditFruitDialog(fruitId: number): void {
     const dialogRef = this.dialog.open(FruitDialogComponent, {
       data: { fruits, fruitId, action: 'edit' },
+      maxWidth: '500px',
+      minWidth: '300px',
+      backdropClass: 'dialog-backdrop',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
