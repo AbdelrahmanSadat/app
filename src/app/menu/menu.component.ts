@@ -25,31 +25,15 @@ import { CartService } from '../../services/cart.service';
   ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
-  // providers: [CartService],
 })
 export class MenuComponent {
   title = 'menu';
-  // todo?: initialization can be moved up to cart service 
-  //?  & relying solely on cart service instead of keeping two copies of fruits
-  fruits = fruits.map((f) => ({ ...f, amount: 0 }));
 
   constructor(public dialog: MatDialog, public cartService: CartService) {}
 
-  incrementFruitAmount(fruitId: number) {
-    const fruit = this.fruits.find((f) => f.id === fruitId);
-    fruit && fruit.inventorySize > fruit.amount && fruit.amount++;
-
-    this.cartService.addToCart(fruitId);
-  }
-  decrementFruitAmount(fruitId: number) {
-    const fruit = this.fruits.find((f) => f.id === fruitId);
-    fruit && fruit.amount > 0 && fruit.amount--;
-    this.cartService.removeFromCart(fruitId);
-  }
-
   openAddFruitDialog(): void {
     const dialogRef = this.dialog.open(FruitDialogComponent, {
-      data: { fruits, action: 'add' },
+      data: { fruits: this.cartService.cart },
       maxWidth: '500px',
       minWidth: '300px',
       backdropClass: 'dialog-backdrop',
@@ -63,7 +47,7 @@ export class MenuComponent {
 
   openEditFruitDialog(fruitId: number): void {
     const dialogRef = this.dialog.open(FruitDialogComponent, {
-      data: { fruits, fruitId, action: 'edit' },
+      data: { fruits: this.cartService.cart, fruitId },
       maxWidth: '500px',
       minWidth: '300px',
       backdropClass: 'dialog-backdrop',
