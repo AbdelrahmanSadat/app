@@ -5,7 +5,7 @@
     </div>
     <mat-divider class="bg-black"> </mat-divider>
 
-    <div class="mb-20 mt-4">
+    <div class="mb-10 mt-4">
     <ng-container *ngFor="let fruit of cartService.cart">
       <mat-card class="mt-4 flex justify-between bg-white rounded-3xl" (click)="openEditFruitDialog(fruit.id)">
         <div class="flex">
@@ -22,16 +22,16 @@
         </div>
 
 
-        <div class="flex flex-col pr-2">
+        <div class="flex flex-col pr-4 min-w-fit">
           <mat-icon
             fontIcon="add"
-            class="m-auto font-7xl"
+            class="m-auto text-4xl min-w-fit"
             (click)="$event.stopPropagation(); incrementFruitAmount(fruit.id)"
           ></mat-icon>
-          <div class="text-center">{{ fruit.amount }}</div>
+          <div class="text-right pr-[2px]">{{ fruit.amount }}</div>
           <mat-icon
             fontIcon="remove"
-            class="m-auto"
+            class="m-auto text-4xl min-w-fit"
             (click)="$event.stopPropagation(); decrementFruitAmount(fruit.id)"
           ></mat-icon>
         </div>
