@@ -1,13 +1,14 @@
-<div class="p-2">
+<div class="p-4">
     <div class="flex justify-between">
-      <h4>Menu</h4>
+      <h2>Menu</h2>
       <mat-icon fontIcon="add" (click)="openAddFruitDialog()"></mat-icon>
     </div>
     <mat-divider class="bg-black"> </mat-divider>
 
-    <div class="mb-20">
+    <div class="mb-20 mt-4">
     <ng-container *ngFor="let fruit of cartService.cart">
-      <mat-card class="mt-2 flex justify-between bg-white" (click)="openEditFruitDialog(fruit.id)">
+      <mat-card class="mt-4 flex justify-between bg-white" (click)="openEditFruitDialog(fruit.id)">
+        <div class="flex">
         <img [src]="'assets/images/'+fruit.img" alt="" class="h-full w-auto" />
         <div>
           <mat-card-header>
@@ -18,6 +19,9 @@
             <span mat-button>{{ fruit.price }} EGP</span>
           </mat-card-actions>
         </div>
+        </div>
+
+
         <div class="flex flex-col pr-2">
           <mat-icon
             fontIcon="add"
@@ -30,7 +34,6 @@
             class="m-auto"
             (click)="$event.stopPropagation(); decrementFruitAmount(fruit.id)"
           ></mat-icon>
-          <mat-icon></mat-icon>
         </div>
       </mat-card>
     </ng-container>
@@ -41,6 +44,6 @@
       <button class="h-16 w-fit grow-[1] rounded-full px-10 text-lg bg-black text-white">
         <a [routerLink]="['/cart']"> Cart</a>
       </button>
-      <button class="h-16 w-fit grow-[2] rounded-full px-10 text-lg bg-black text-white">Pay</button>
+      <button class="h-16 w-fit grow-[2] rounded-full px-10 text-lg bg-black text-white">Pay {{cartService.totalPrice() || null}}</button>
     </div>
   </div>
