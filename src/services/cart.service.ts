@@ -18,12 +18,12 @@ export class CartService {
 
   addToCart(fruitId: number) {
     const fruit = this.cart.find((f) => f.id === fruitId);
-    fruit && fruit.amount++;
+    fruit && fruit.amount < fruit.inventorySize && fruit.amount++;
   }
 
   removeFromCart(fruitId: number) {
     const fruit = this.cart.find((f) => f.id === fruitId);
-    fruit && fruit.amount--;
+    fruit && fruit.amount > 0 && fruit.amount--;
   }
 
   totalPrice(){

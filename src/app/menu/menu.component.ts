@@ -43,6 +43,7 @@ export class MenuComponent {
   decrementFruitAmount(fruitId: number) {
     const fruit = this.fruits.find((f) => f.id === fruitId);
     fruit && fruit.amount > 0 && fruit.amount--;
+    this.cartService.removeFromCart(fruitId);
   }
 
   openAddFruitDialog(): void {
