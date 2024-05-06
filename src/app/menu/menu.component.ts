@@ -56,6 +56,7 @@ export class MenuComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      if(!result) return
       this.cartService.cart.push({ ...result.data, img: 'apple.png', amount: 0 });
     });
   }
@@ -69,6 +70,7 @@ export class MenuComponent {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      if(!result) return
       const index = this.cartService.cart.findIndex((f) => f.id === result.data.id);
       if (index !== -1)
         this.cartService.cart[index] = result.data;

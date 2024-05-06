@@ -75,6 +75,10 @@ export class FruitDialogComponent {
     }
   }
 
+  close(){
+    this.dialogRef.close();
+  }
+
   onSubmit() {
     const fruit = {
       id: this.fruitId ?? this.fruits.length,

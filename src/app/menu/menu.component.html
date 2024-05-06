@@ -41,9 +41,9 @@
 
     
     <div class="flex justify-between gap-2 mb-6">
-      <button class="h-16 w-fit grow-[1] rounded-full px-10 text-lg bg-black text-white">
+      <button class="h-16 w-fit grow-[1] rounded-full px-10 text-lg bg-[#383838] text-white">
         <a [routerLink]="['/cart']"> Cart</a>
       </button>
-      <button class="h-16 w-fit grow-[2] rounded-full px-10 text-lg bg-black text-white">Pay {{cartService.totalPrice() || null}}</button>
+      <button class="h-16 w-fit grow-[2] rounded-full px-10 text-lg bg-gradient-to-r from-[#00A0C3] to-[#00C7B8] text-white">Pay {{cartService.totalPrice() || null}}</button>
     </div>
   </div>
